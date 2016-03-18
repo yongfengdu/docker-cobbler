@@ -1,0 +1,28 @@
+# Cobbler generated configuration file for dnsmasq
+# $date 
+#
+
+# resolve.conf .. ?
+#no-poll
+#enable-dbus
+
+# workaround for dnsmasq start problem
+user=root
+
+read-ethers
+addn-hosts = /var/lib/cobbler/cobbler_hosts
+
+interface=eth1
+domain=localdomain
+dhcp-range=172.24.0.50,172.24.0.250,255.255.252.0,12h
+#dhcp-range=192.168.1.5,192.168.1.200
+dhcp-option=3,$next_server
+dhcp-option=6,172.24.3.1,8.8.8.8,8.8.4.4
+dhcp-lease-max=1000
+dhcp-authoritative
+dhcp-boot=pxelinux.0
+dhcp-boot=net:normalarch,pxelinux.0
+dhcp-boot=net:ia64,$elilo
+
+$insert_cobbler_system_definitions
+

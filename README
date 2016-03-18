@@ -1,0 +1,12 @@
+Cobbler with dnsmasq managed
+
+To start, use
+docker run -d -p 80:80 -p 53:53 -v /home/cloud/conf:/conf --name cobbler dolpher/cobbler
+
+Note that any files in /conf will be copied to /etc/cobbler, so you can pass config files to cobbler
+
+To access:
+http://host_ip/cobbler_web
+with username and password cobbler
+
+The dnsmasq is not started untill you did the first cobbler sync
